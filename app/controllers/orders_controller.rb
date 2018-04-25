@@ -10,6 +10,13 @@ class OrdersController < ApplicationController
   # GET /orders/1
   # GET /orders/1.json
   def show
+    @restaurant_name = Restaurant.where(:id=>:restaurant_id)
+    @items = Item.where(:order_id=>1)
+  end
+
+  #adding for my orders
+  def myorders
+    @orders = Order.all
   end
 
   # GET /orders/new
@@ -24,7 +31,7 @@ class OrdersController < ApplicationController
   # POST /orders
   # POST /orders.json
   def create
-    @order = Order.new(order_params)
+    @order = current_user.orders.new(order_params)
 
     respond_to do |format|
       if @order.save
@@ -69,6 +76,6 @@ class OrdersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def order_params
-      params.require(:order).permit(:user_id, :restaurant_id)
+      params.require(:order).permit(:restaurant_id)
     end
 end

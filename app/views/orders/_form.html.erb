@@ -11,15 +11,18 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <!-- <div class="field">
     <%= form.label :user_id %>
     <%= form.number_field :user_id, id: :order_user_id %>
-  </div>
+  </div> -->
+  <h5>Choose Restaurant From pullDown flap</h5>
+
 
   <div class="field">
-    <%= form.label :restaurant_id %>
-    <%= form.number_field :restaurant_id, id: :order_restaurant_id %>
+    <%= form.label :restaurant_id %><br>
+    <%= form.collection_select(:restaurant_id, Restaurant.all, :id, :name) %>
   </div>
+
 
   <div class="actions">
     <%= form.submit %>

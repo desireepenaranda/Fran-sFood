@@ -1,14 +1,21 @@
+<div class="container">
+
 <p id="notice"><%= notice %></p>
 
-<p>
+<!-- <p>
   <strong>User:</strong>
   <%= @order.user_id %>
-</p>
+</p> -->
 
 <p>
   <strong>Restaurant:</strong>
   <%= @order.restaurant_id %>
 </p>
-
+<h4>Order Items</h4>
+  <% @items.each do |item| %>
+    <ul>
+      <li><%= item.name %></li>
+    </ul>
+  <% end %>
 <%= link_to 'Edit', edit_order_path(@order) %> |
 <%= link_to 'Back', orders_path %>

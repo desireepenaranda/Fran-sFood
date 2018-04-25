@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
-  root 'restaurants#index'
+  root 'orders#index'
+  get '/myorders', to: 'orders#myorders'
   devise_for :users
   resources :items
   resources :orders
