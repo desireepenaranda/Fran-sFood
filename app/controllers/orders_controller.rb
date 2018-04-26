@@ -29,7 +29,10 @@ class OrdersController < ApplicationController
   end
 
   def update_acceptance
+    @order = set_order
     @order.update({"accepted" => true})
+    redirect_back(fallback_location: current_user)
+
     #   format.html { redirect_to @order, notice: 'Order was successfully accepted.' }
     # }
     # format.json { render :show, accepted: :true, location: @order }
@@ -39,6 +42,7 @@ class OrdersController < ApplicationController
   # POST /orders.json
   def create
     @order = current_user.orders.new(order_params)
+    @order.update({"orderedat" => Time.now})
 
     respond_to do |format|
       if @order.save
@@ -49,6 +53,7 @@ class OrdersController < ApplicationController
         format.json { render json: @order.errors, status: :unprocessable_entity }
       end
     end
+
   end
 
   # PATCH/PUT /orders/1

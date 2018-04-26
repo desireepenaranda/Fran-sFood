@@ -4,7 +4,10 @@ Rails.application.routes.draw do
   devise_for :users, :controllers => { registrations: 'registrations' }
   resources :items
   resources :orders do
-    patch 'update_acceptance'
+    member do
+        patch 'update_acceptance'
+    end
+
   end
 
   resources :restaurants

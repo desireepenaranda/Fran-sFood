@@ -23,6 +23,7 @@ ActiveRecord::Schema.define(version: 20180425183019) do
     t.integer "user_id"
     t.integer "restaurant_id"
     t.boolean "accepted", default: false
+    t.string "orderedat", default: "2018-04-26 14:45:40.835439"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
