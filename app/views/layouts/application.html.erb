@@ -44,18 +44,35 @@ div {
   </head>
   <nav class="navbar navbar-default">
   <div class="container-fluid">
-    <div class="navbar-header">
-      <a class="navbar-brand" href="/orders">Fran's Food</a>
-    </div>
-    <ul class="nav navbar-nav">
-      <li class="active"><a href="/orders">Everyone's Orders</a></li>
-      <li><a href="/myorders">Your Order History</a></li>
-      <li><a href="/restaurants">Restaurants</a></li>
-      <li><a href="/orders/new">Create Order</a></li>
 
+    <ul class="nav navbar-nav">
       <% if user_signed_in? %>
+
+
+        <% if current_user.isRestaurant %>
+        <div class="navbar-header">
+        <a class="navbar-brand" href="/orders">Fran's Food Restaurant Style</a>
+        </div>
+
+        <li class="active"><a href="/orders">Everyone's Orders</a></li>
+        <li><a href="/myorders">Your Order History</a></li>
+        <% if current_user.restaurants.empty? %>
+          <li><a href="/restaurants/new">You're a new and need to add restaurant to the list of restaurant</a></li>
+        <% else %>
+         <li><a href="/restaurants/new">YHello</a></li>
+        <% end %>
+
+        <% else %>
+        <div class="navbar-header">
+        <a class="navbar-brand" href="/orders">Fran's Food</a>
+        </div>
+        <li class="active"><a href="/orders">Everyone's Orders</a></li>
+        <li><a href="/myorders">Your Order History</a></li>
+        <li><a href="/restaurants">Restaurants</a></li>
+        <li><a href="/orders/new">Create Order</a></li>
+        <% end %>
         <li> <%= link_to 'Logout', destroy_user_session_path, method: :delete %> </li>
-      <% else %>
+        <% else %>
       <% end %>
     </ul>
   </div>

@@ -28,6 +28,13 @@ class OrdersController < ApplicationController
   def edit
   end
 
+  def update_acceptance
+    @order.update({"accepted" => true})
+    #   format.html { redirect_to @order, notice: 'Order was successfully accepted.' }
+    # }
+    # format.json { render :show, accepted: :true, location: @order }
+  end
+
   # POST /orders
   # POST /orders.json
   def create
