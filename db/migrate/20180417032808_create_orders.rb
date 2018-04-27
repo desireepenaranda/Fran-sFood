@@ -4,7 +4,7 @@ class CreateOrders < ActiveRecord::Migration[5.1]
       t.integer :user_id
       t.integer :restaurant_id
       t.boolean :accepted, default: false
-      t.string :orderedat, default: Time.now
+      t.string :orderedat
 
       t.timestamps
     end
