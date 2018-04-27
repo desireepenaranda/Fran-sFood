@@ -10,7 +10,7 @@ class OrdersController < ApplicationController
   # GET /orders/1
   # GET /orders/1.json
   def show
-    @restaurant_name = Restaurant.where(:id=:restaurant_id)
+    @restaurant_name = Restaurant.where(:id=>:restaurant_id)
     # @items = Item.where(:order_id=)
   end
 
