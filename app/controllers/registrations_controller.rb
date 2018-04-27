@@ -13,5 +13,4 @@ class RegistrationsController < Devise::RegistrationsController
   def isRestaurant
     @user.isRestaurant
   end
-
 end
